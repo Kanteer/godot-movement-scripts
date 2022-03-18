@@ -20,14 +20,14 @@ var velocity = Vector2.ZERO
 #func _ready():
   #animationTree.active = true
 
-#func _physics_process(delta):
-  #match state:
-    #MOVE:
-      #move_state (delta)
-    #ATTACK
-      #attack_state (delta)
-    #ROLL
-      #roll_state (delta)
+func _physics_process(delta):
+  match state:
+    MOVE:
+      move_state (delta)
+    ATTACK:
+      attack_state (delta)
+    ROLL:
+      roll_state (delta)
     
 func move_state(delta):
   var input_vector = Vector2.ZERO
