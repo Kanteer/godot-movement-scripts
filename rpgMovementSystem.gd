@@ -1,3 +1,5 @@
+#extends Player
+
 var VELOCITY = 100
 var ACCELERATION = 100
 var FRICTION = 100
