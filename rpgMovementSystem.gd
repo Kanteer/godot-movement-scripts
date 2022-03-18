@@ -18,9 +18,19 @@ var velocity = Vector2.ZERO
 #onready var animationState = animationTree.get("parameters/playback")
 
 #func _ready():
-  animationTree.active = true
+  #animationTree.active = true
 
-func _process(delta):
-  Input.on_key_just_pressed("ui_down") - Input.on_key_just_pressed("ui_up")
-  Input.on_key_just_pressed("ui_left") - Input.on_key_just_pressed("ui_right")
+#func _physics_process(delta):
+  #match state:
+    #MOVE:
+      #move_state (delta)
+    #ATTACK
+      #attack_state (delta)
+    #ROLL
+      #roll_state (delta)
+    
+func move_state(delta):
+  var input_vector = Vector2.ZERO
+  input_vector.x = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+  input_vector.y = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 
