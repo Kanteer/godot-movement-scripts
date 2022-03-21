@@ -28,3 +28,23 @@ func _physics_process(delta: float) -> void:
   Physics2D.compute_gravity(self, delta)
   if previous_position != position:
     _on_position_changed()
+    
+func _on_Getting_hit(alive: bool, direction: int) -> void:
+  look_direction.x = direction
+  is alive = alive
+  _change_state('GettingHit')
+  
+func _input(event: InputEvent) -> void:
+  current_state.handle_input(self, event)
+
+func _start_cooldown():
+  $CooldownTimer.start()
+  $CooldownBar.start()
+  
+func _on_Player_death() -> void:
+  _on_Death()
+  emit_signal('player_death')
+  
+func _on_position_changed():
+  previous_position = position
+  emit_signal('player_position_changed', position)
